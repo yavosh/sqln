@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package sqln;
+option go_package = "github.com/yavosh/sqln/pb";
+
+message Column {
+  string name = 1;
+  uint32 type = 2;
+}
+
+message Value {
+  bytes payload = 1;
+}
+
+message Row {
+  int64 rowId = 1;
+  repeated Value values = 2;
+}
+
+message QueryRequest {
+  string db = 1;
+  string query = 2;
+  repeated string params = 3;
+}
+
+message QueryResult {
+  repeated Column columns = 1;
+  repeated Row rows = 2;
+}
+
+// Keys RPC service manages encryption keys.
+service Query {
+  rpc ExecuteQuery(QueryRequest) returns (QueryResult){}
+}

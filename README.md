@@ -1,11 +1,11 @@
-# SQLITE Network 
+# SQLN: sqlite on the network 
 
 A network accessible sqlite database using grpc protocol. Used to experiment with k8s operators.
 The rqlite project already implements most of the goals of this project.
 
 ## Running 
 
-For an im-memory database:
+For an in-memory database:
 
     go run cmd/sqln/main.go --data-source ":memory:"
 
